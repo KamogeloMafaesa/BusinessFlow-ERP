@@ -1,24 +1,18 @@
 import React from 'react';
-import { Routes, Route, Link} from "react-router-dom";
-
+import { Routes, Route} from "react-router-dom";
+import Layout from "./components/Layout";
 
 function App() {
-
   return (
-    <div className="min-h-screen bg-gray-100 p-4">
-    <h1 className="text-2xl-font-bold">Business Flow ERP</h1>
-    <nav className="mt-2 space-x-4">
-      <Link to= "/" className="text-blue-500 hover:underline">Dashboard</Link>
-      <Link to= "/customers" className="text-blue-500 hover:underline">Customers</Link>
-      <Link to= "/invoices" className="text-blue-500 hover:underline">Invoices</Link>
-    </nav>
 
     <Routes>
-      <Route path="/" element = {<Dashboard />}/>
-      <Route path="/customers" element = {<Customers />}/>
-      <Route path="/Invoices" element = {<Invoices/>}/>
+      <Route path="/" element={<Layout />}>
+      <Route index element={<Dashboard />} />
+      <Route path="customers" element={<Customers />} />
+      <Route path="Invoices" element={<Invoices/>} />
+      </Route>
     </Routes>
-  </div>
+
   );
 }
 

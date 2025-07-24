@@ -1,10 +1,14 @@
 import React, {useState} from "react";
 
 function Customers(){  
- const [customers, setCustomers] = useState([]); /* useState will act as a box to store my customers, it start off empty*/
+ const [customers, setCustomers] = useState([
+    {id: 1, name: "Kamogelo Mafaesa"},
+    {id: 2, name: "Farayi Mpofu"},
+    {id: 3, name: "John Doe"},
+ ]); /* useState will act as a box to store my customers, it start off empty*/
  const [name, setName] = useState("");
 
-
+//Adding customers logic
 const handleAddCustomer = (e) =>{
     e.preventDefault(); // stops page reload
     if(!name.trim()) return; //checks if name is filled
@@ -17,6 +21,11 @@ const handleAddCustomer = (e) =>{
     setCustomers((prev) => [...prev, newCustomer]); //setCustomers updates the box
     setName("");//clear input
 };
+
+//Deleting customers logic
+const handleDelete = (id) => {
+    setCustomers((prev) => prev.filter((customer) => customer.id !== id));
+}
 
 return(
 
@@ -36,11 +45,15 @@ return(
 
         <ul className="space-y-2">
             {customers.map((customer) => (
-                <li key={customer.id} className="bg-white p-3 rounded shadow">
-                    {customer.name}
+                <li key={customer.id} className="bg-white p-3 rounded shadow flex justify-between items-center">
+                   <span>{customer.name}</span>
+                   <button onClick={() => handleDelete(customer.id)} 
+                   className="bg-red-500 text-white px-3 py-1 rounded hover:bg-red-600">
+                    Delete</button> 
                 </li>
             ))}
         </ul>
+
     </div>
 );
 }

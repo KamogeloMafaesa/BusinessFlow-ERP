@@ -1,6 +1,9 @@
 import React from 'react';
 import { Routes, Route} from "react-router-dom";
 import Layout from "./components/Layout";
+import Dashboard from './pages/Dashboard';
+import Customers from './pages/Customers';
+ import Invoices from './pages/Invoices';
 
 function App() {
   return (
@@ -16,8 +19,6 @@ function App() {
   );
 }
 
-const Dashboard = () => <p className="mt-2-text-gray-600">Welcome to the ERP dashboard</p>;
-const Customers = () => <p className="mt-2-text-gray-600">Manage your customers here</p>;
-const Invoices = () => <p className="mt-2-text-gray-600">View and manage invoices here</p>;
+
 
 export default App
